@@ -10,14 +10,13 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = "https://github.com/MycroftAI/mimic.git;protocol=http"
 
+SRC_URI[md5sum] = "ab097b9f88a1e78f3fdb2ce6afd19869"
+
 S = "${WORKDIR}"
 
-do_compile() {
-             ./configure # --prefix=
-             make
-}
+DEPENDS = " gcc pulseaudio pkgconfig "
 
-do_install() {
-             echo "install here"
-             #make install
-}
+RDEPENDS_${PN} = " gcc pulseaudio pkgconfig "
+
+inherit autotools
+
